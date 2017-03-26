@@ -23,6 +23,12 @@
 <link rel="import" href="pages/portofolio-page.html">
 <dom-module id="main-app">
   <template>
+    <style>
+      :host{
+        display:block;
+        min-height:100vh;
+      }
+    </style>
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="portofolio">
       <portofolio-page name="portofolio"></portofolio-page>
     </iron-pages>
