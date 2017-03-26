@@ -43,8 +43,8 @@
       }
     },
     observers:[
-    `'_routePageChanged(routeData.page)'
-    ]
+      '_routePageChanged(routeData.page)'
+    ],
     created:function(){
       window.performance && performance.mark && performance.mark('main-app.created');
       this.removeAttribute('unresolved');
