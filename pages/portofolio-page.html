@@ -1,0 +1,597 @@
+
+<dom-module id="portofolio-page">
+  <template>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        padding-top: 64px;
+        min-height: 100vh;
+        --app-primary-color: #202020;
+        --app-secondary-color: #757575;
+        --app-accent-color: #172C50;
+        --paper-button-ink-color: var(--app-accent-color);
+        --paper-icon-button-ink-color: var(--app-accent-color);
+        --paper-spinner-color: var(--app-accent-color);
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        color: var(--app-primary-color);
+      }
+
+      app-header {
+        @apply(--layout-fixed-top);
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.95);
+        --app-header-shadow: {
+          box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
+          height: 10px;
+          bottom: -10px;
+        };
+      }
+      
+      .navigation iron-selector{
+        display:flex;
+        flex-flow:row;
+      }
+      .iron-selected{
+        font-weight:bold;
+        background-color:rgba(0,0,0,.1);
+      }
+      paper-icon-button {
+        color: var(--app-primary-color);
+      }
+
+      .title a {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        color: var(--app-primary-color);
+        text-decoration: none;
+        display: inline-block;
+        pointer-events: auto;
+      }
+
+      .left-bar-item {
+        width: 40px;
+      }
+
+      .menu-btn {
+        display: none;
+      }
+
+      .announcer {
+        position: fixed;
+        height: 0;
+        overflow: hidden;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+      
+      footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        margin-top: 20px;
+        line-height: 24px;
+      }
+
+      footer > a {
+        color: var(--app-secondary-color);
+        text-decoration: none;
+      }
+
+      footer > a:hover {
+        text-decoration: underline;
+      }
+      
+      .grid {
+        width:100%;
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-center-justified);
+        @apply(--layout-center);
+        margin: 0 10px 32px 10px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .grid li {
+        display:flex;
+        display:-webkit-flex;
+        justify-content:center;
+        -webkit-flex: 1 1;
+        flex: 1 1;
+        -webkit-flex-basis: 33%;
+        flex-basis: 33%;
+        max-width: 33%;
+        margin:10px 0px;
+      }
+
+      .grid a {
+        display:block;
+        text-decoration: none;
+      }
+      
+      paper-item{
+        cursor:pointer;
+      }
+      
+      section{
+        padding:80px;
+      }
+      
+      section h4{
+        margin-bottom:20px;
+      }
+      
+      section#skills{
+        @apply(--layout-vertical);
+        @apply(--layout-wrap);
+        @apply(--layout-center-justified);
+        @apply(--layout-center);
+      }
+      
+      section#about{
+        width:100%;
+        font-size:20px;
+        @apply(--layout-vertical);
+        display:block;
+        background-color:#01D6FE;
+        color:#fff;
+        border-bottom:7px solid #1591A7;
+      }
+      
+      section#about .img-container{
+        display:flex;
+        justify-content:center;
+        margin-bottom:20px;
+      }
+      
+      section#about .profile{
+        width:100%;
+      }
+      
+      section#about .social-media-links{
+        display:block;
+        margin-top:20px;
+      }
+      
+      .social-media-links > a i{
+        height:30px;
+        width:30px;  
+      }
+      
+      .social-media-links > a{
+        text-decoration:none;
+        color:#FFF;
+        font-size:30px;
+        padding:10px;
+        border:2px solid #FFF;
+        border-radius:50%;
+        text-align:center;
+        margin:0 10px;
+      }
+      
+      .social-media-links a:hover{
+        background-color:#FFF;
+        color:#01D6FE;
+      }
+      
+      .grid li.skill-item{
+        max-width:200px;
+        margin:10px;
+      }
+      
+      .grid li.portofolio-item{
+        -webkit-flex-basis: 50%;
+        flex-basis: 50%;
+        width:50%;
+        margin:10px;
+      }
+      
+      .portofolio-item paper-card{
+        --paper-card-header:{
+          display:flex;
+          display:-webkit-flex;
+          justify-content:center;
+          min-height:151px;
+          max-height:300px;
+          overflow:hidden;
+        }
+        --paper-card-header-image:{
+          height:100%;
+          background-size:cover;
+        }
+      }
+      
+      .portofolio-item .card-action{
+        padding:10px;
+      }
+      
+      .portofolio-item .card-action .tag{
+        background-color:#01D6FE;
+        color:#FFF;
+      }
+      
+      .skill-item paper-card{
+        --paper-card-header:{
+          display:flex;
+          display:-webkit-flex;
+          justify-content:center;
+          align-items:center;
+          padding:20px;
+          height:200px;
+          width:200px;
+        }
+      }
+      
+      .pic{
+        max-height:300px;
+      }
+      
+      hr.style-eight {
+        padding: 0;
+        border: none;
+        border-top: medium double #FFF;
+        color: #FFF;
+        text-align: center;
+      }
+      
+      hr.style-eight:after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.9em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background-color:#01D6FE;
+      }
+      
+      footer{
+        width:100%;
+        @apply(--layout-vertical);
+        position:relative;  
+      }
+      
+      footer .top{
+        width:100%;
+        @apply(--layout-horizontal);
+        padding:0 20px;
+        text-align:left;
+        background-color:#3DC1D8;
+        color:#FFF;
+      }
+      
+      footer .top h5{
+        text-align:center;
+      }
+      
+      footer .top > *{
+        flex-basis:50%;
+        max-width:50%;
+        padding:20px 10px;
+      }
+      
+      footer .top .map{
+        min-height:100%;
+      }
+      
+      .contact paper-input,.contact paper-textarea{
+        --paper-input-container-color:#FFF;
+        --paper-input-container-focus-color:#FFF;
+        --paper-input-container-underline:{
+          color:#FFF;    
+        }
+        --paper-input-container-label-floating:{
+          color:#FFF:
+        }
+        --paper-input-container-underline-focus:{
+          border-bottom: 2px solid #2D2D2D;
+        }
+      }
+      
+      .contact paper-button{
+        background-color:#FFF;
+        color:#000;
+      }
+      
+      #map{
+        height:calc(100% - 22px);
+      }
+      
+      footer .bottom{
+        @apply(--layout-vertical);
+        padding:10px 0;
+        background-color:#1591A7;
+      }
+      
+      footer .bottom span{
+        color:#FFF;
+      }
+      /* small screen */
+      @media (max-width: 767px) {
+        :host {
+          padding-top: 64px;
+        }
+        
+        .menu-btn {
+          display: block;
+        }
+      }
+      
+      @media (max-width: 650px){
+        .grid  li {
+          -webkit-flex-basis: 100%;
+          flex-basis: 100%;
+          max-width: 100%;
+          justify-content:center;
+        }
+      }
+      
+      @media (min-width: 650px) and (max-width: 922px){
+        .grid  li {
+          -webkit-flex-basis: 50%;
+          flex-basis: 50%;
+          max-width: 50%;
+        }
+      }
+    </style>
+    <app-header role="navigation" id="header" effects="waterfall" condenses reveals>
+      <app-toolbar sticky>
+        <div class="left-bar-item">
+          <a class="back-btn" href="#" tabindex="-1"></a>
+        </div>
+        <div class="title" main-title><a href="#" aria-label="Muhammad Sayuti">Muhammad Sayuti</a></div>
+        <nav class="navigation">
+          <iron-selector on-iron-select="selectedMenuChanged">
+            <paper-item name="#about">
+              About
+            </paper-item>
+            <paper-item name="#skills">
+              Skills
+            </paper-item>
+            <paper-item name="#portofolio">
+              Portofolio
+            </paper-item>
+          </iron-selector>
+        </nav>
+      </app-toolbar>
+    </app-header>
+    <section id="about">
+      <h4 class="text-center">About Me</h4>
+      <div class="profile row">
+        <div class="col-sm-12 col-md-5 img-container">
+          <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d"/>
+        </div>
+        <div class="col-sm-12 col-md-7">
+          <p>I'am 22 year old self taught Software Developer live in Balikpapan, Indonesia.</p>
+          <p>Learn programming since second grade in high school.</p>
+          <p>Taking college in STMIK Balikpapan and right now i'm at the end of semester waiting for my graduation ceremony.</p>
+          <p>I've worked with startups and some P2P project over the years.</p>
+          <hr class="style-eight" ></hr>
+          <span>Follow me on:</span>
+          <div class="social-media-links">
+            <a target="_blank" href="//github.com/muhammadsayuti"><i class="fa fa-github"></i></a>
+            <a target="_blank" href="//twitter.com/msayuti94"><i class="fa fa-twitter"></i></a>
+            <a target="_blank" href="//www.linkedin.com/in/muhammad-sayuti-74365b10a/"><i class="fa fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+    <section id="skills">
+      <h4>Skills</h4>
+      <ul class="grid">
+        <li class="skill-item">
+          <paper-card image="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png">
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fcss3.png?alt=media&token=6f31a9df-1c5f-46d1-b87f-9e3fee6e794b">
+
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fjs.png?alt=media&token=0e30faeb-8c15-452f-8b8b-a08e15077290">
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/200px-PHP-logo.svg.png">
+
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="http://shaman.uy/static/images/net.png">
+
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://www.keizu.co.jp/ksvc/img/portfolio/ksvc/nodejs-logo_0.png">
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="http://ourcodeworld.com/public-media/gallery/categorielogo-5713d3560b152.png">
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FMySQL-Logo.png?alt=media&token=ea21487d-1ee3-4d5b-aff0-dcc865a625c4">
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Microsoft_Access_2013_logo.svg/1043px-Microsoft_Access_2013_logo.svg.png">
+            
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="http://therealdanvega.com/wp-content/uploads/2016/01/java.png">
+            
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667">
+            
+          </paper-card>
+        </li>
+        <li class="skill-item">
+          <paper-card image="https://oracle-base.com/blog/wp-content/uploads/2017/02/SQL-Server-2012.png">
+            
+          </paper-card>
+        </li>
+      </ul>
+    </section>
+    <section id="portofolio">
+      <h4 class="text-center">Portofolio</h4>
+      <ul class="grid">
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio1.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">HTML</span>
+              <span class="badge tag">CSS</span>
+              <span class="badge tag">Javascript</span>
+              <span class="badge tag">Polymer</span>
+              <span class="badge tag">Firebase Database</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio2.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">Java</span>
+              <span class="badge tag">Android</span>
+              <span class="badge tag">SQLite</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio3.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">.NET</span>
+              <span class="badge tag">Visual Basic</span>
+              <span class="badge tag">MySQL</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio4.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">.NET</span>
+              <span class="badge tag">Visual Basic</span>
+              <span class="badge tag">MySQL</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio5.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">.NET</span>
+              <span class="badge tag">Visual Basic</span>
+              <span class="badge tag">MySQL</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio6.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">.NET</span>
+              <span class="badge tag">Visual Basic</span>
+              <span class="badge tag">C#</span>
+              <span class="badge tag">SQL Server</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio7.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">.NET</span>
+              <span class="badge tag">Visual Basic</span>
+              <span class="badge tag">MySQL</span>
+              <span class="badge tag">Access</span>
+            </div>
+          </paper-card>
+        </li>
+        <li class="portofolio-item">
+          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio8.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+            <div class="card-action">
+              <span class="badge tag">PHP</span>
+              <span class="badge tag">CodeIgniter</span>
+              <span class="badge tag">MySQL</span>
+            </div>
+          </paper-card>
+        </li>
+      </ul>
+    </section>
+    <footer>
+      <div class="top">
+        <div class="contact">
+          <h5>Contact</h5>
+          <paper-input label="Name"></paper-input>
+          <paper-input label="Email"></paper-input>
+          <paper-input label="Phone Number"></paper-input>
+          <paper-textarea label="Message"></paper-textarea>
+          <paper-button raised>Send</paper-button>
+        </div>
+        <div class="map">
+          <h5>Where i live</h5>
+          <div id="map">
+            
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <span>© 2017. All Rights Reserved.</span>
+        <span>Designed by Muhammad Sayuti.</span>
+      </div>
+    </footer>
+  </template>
+  <script>
+  Polymer({
+    is:'portofolio-app',
+    ready:function(){
+      document.addEventListener('scroll',this.onScroll.bind(this));
+      this.displayMap();
+    },
+    onScroll:function(e){
+      const scroller = e.target.scrollingElement;
+      const scrollTop = scroller.scrollTop;
+      // this.checkScrollPosition(scrollTop);
+    },
+    checkScrollPosition:function(scrollTop){
+      const sections = Array.from(this.querySelectorAll('section'));
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+
+        if(scrollTop === sectionTop){
+          const selector = this.querySelector('iron-selector');
+
+          selector.selected = `#${section.id}`;
+        }
+      });
+    },
+    selectedMenuChanged:function(e){
+      const selected = e.detail.item.getAttribute('name');
+      this.scrollTo(selected);
+    },
+    scrollTo:function(id){
+      const target = this.querySelector(id);
+      const scrollTop = target.offsetTop;
+      Polymer.AppLayout.scroll({ top: scrollTop, behavior: 'smooth' });
+    },
+    displayMap:function(){
+      var point = new google.maps.LatLng(-1.2284667,116.8186361);
+      var options = {
+        zoom: 12,
+        center: point
+      };
+      var map = new google.maps.Map(this.$$('#map'), options);
+      var marker = new google.maps.Marker({
+        position: point,
+        map: map
+      });
+    }
+  });
+  </script>
+</dom-module>
