@@ -132,12 +132,16 @@
       }
       
       section#about .profile{
-        width:100%;
+        max-width:100%;
       }
       
-      section#about .social-media-links{
-        display:block;
+      section#about > .social-media-links{
+        position:relative;
+        display:inline-block;
         margin-top:20px;
+        padding:0;
+        left:0;
+        margin:0;
       }
       
       .social-media-links > a i{
@@ -153,7 +157,7 @@
         border:2px solid #FFF;
         border-radius:50%;
         text-align:center;
-        margin:0 10px;
+        /*margin:0 10px;*/
       }
       
       .social-media-links a:hover{
@@ -191,7 +195,10 @@
       .portofolio-item .card-action{
         padding:10px;
       }
-      
+      .badge{
+        padding:5px 10px;
+        border-radius:4px;
+	  }
       .portofolio-item .card-action .tag{
         background-color:#01D6FE;
         color:#FFF;
@@ -365,7 +372,7 @@
           <p>Taking college in STMIK Balikpapan and right now i'm at the end of semester waiting for my graduation ceremony.</p>
           <p>I've worked with startups and some P2P project over the years.</p>
           <hr class="style-eight" ></hr>
-          <span>Follow me on:</span>
+          <h5>Follow me on:</h5>
           <div class="social-media-links">
             <a target="_blank" href="//github.com/muhammadsayuti"><i class="fa fa-github"></i></a>
             <a target="_blank" href="//twitter.com/msayuti94"><i class="fa fa-twitter"></i></a>
