@@ -7,7 +7,7 @@
         position: relative;
         padding-top: 64px;
         min-height: 100vh;
-        width:100%;
+		min-width:100vw;
         --app-primary-color: #202020;
         --app-secondary-color: #757575;
         --app-accent-color: #172C50;
@@ -28,7 +28,10 @@
           bottom: -10px;
         };
       }
-      
+      .container{
+        display:block;
+        width:100%;
+	  }
       .navigation iron-selector{
         display:flex;
         flex-flow:row;
@@ -69,34 +72,13 @@
         display: none !important;
       }
       
-      footer {
-        position: absolute;
-        width:100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        text-align: center;
-        margin-top: 20px;
-        line-height: 24px;
-      }
-
-      footer > a {
-        color: var(--app-secondary-color);
-        text-decoration: none;
-      }
-
-      footer > a:hover {
-        text-decoration: underline;
-      }
-      
       .grid {
         width:100%;
         @apply(--layout-horizontal);
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
         @apply(--layout-center);
-        margin: 0 10px 32px 10px;
-        padding: 0;
+        padding: 0 10px 32px 10px;
         list-style: none;
       }
 
@@ -104,11 +86,6 @@
         display:flex;
         display:-webkit-flex;
         justify-content:center;
-        -webkit-flex: 1 1;
-        flex: 1 1;
-        -webkit-flex-basis: 33%;
-        flex-basis: 33%;
-        max-width: 33%;
         margin:10px 0px;
       }
 
@@ -122,11 +99,13 @@
       }
       
       section{
-        padding:80px;
+        padding:75px;
+        max-width:100%;
       }
       
       section h4{
         margin-bottom:20px;
+        text-align:center;
       }
       
       section#skills{
@@ -134,14 +113,13 @@
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
         @apply(--layout-center);
-        width:100%;
+        max-width:100%;
       }
       
       section#about{
-        width:100%;
         font-size:20px;
         @apply(--layout-vertical);
-        display:block;
+        max-width:100%;
         background-color:#01D6FE;
         color:#fff;
         border-bottom:7px solid #1591A7;
@@ -184,7 +162,7 @@
       }
       
       .grid li.skill-item{
-        max-width:200px;
+        max-width:33.3333%;
         margin:10px;
       }
       
@@ -253,35 +231,40 @@
         background-color:#01D6FE;
       }
       
-      footer{
+      #footer > a {
+        color: var(--app-secondary-color);
+        text-decoration: none;
+      }
+
+      #footer > a:hover {
+        text-decoration: underline;
+      }
+     #footer{
+        margin-top: 20px;
         
-        @apply(--layout-vertical);
-        width:100%;
+        display:block;
+		max-width:100%;
         position:relative;  
       }
       
-      footer .top{
-        
+      #footer .top{
         @apply(--layout-horizontal);
-        width:100%;
+        max-height:600px;
+        max-width:100%;
         padding:0 20px;
         text-align:left;
         background-color:#3DC1D8;
         color:#FFF;
       }
       
-      footer .top h5{
+      #footer .top h5{
         text-align:center;
       }
       
-      footer .top > *{
+      #footer .top > *{
         flex-basis:50%;
-        max-width:50%;
+        min-width:49%;
         padding:20px 10px;
-      }
-      
-      footer .top .map{
-        min-height:100%;
       }
       
       .contact paper-input,.contact paper-textarea{
@@ -304,17 +287,19 @@
       }
       
       #map{
-        height:calc(100% - 22px);
+        height:370px ;
+        width:100%;
       }
       
-      footer .bottom{
+      #footer .bottom{
         @apply(--layout-vertical);
+        text-align:center;
         width:100%;
         padding:10px 0;
         background-color:#1591A7;
       }
       
-      footer .bottom span{
+      #footer .bottom span{
         color:#FFF;
       }
       /* small screen */
@@ -345,6 +330,7 @@
         }
       }
     </style>
+    <app-route route="[[route]]"></app-route>
     <app-header role="navigation" id="header" effects="waterfall" condenses reveals>
       <app-toolbar sticky>
         <div class="left-bar-item">
@@ -366,6 +352,7 @@
         </nav>
       </app-toolbar>
     </app-header>
+    <div class="container">
     <section id="about">
       <h4 class="text-center">About Me</h4>
       <div class="profile row">
@@ -373,7 +360,7 @@
           <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d"/>
         </div>
         <div class="col-sm-12 col-md-7">
-          <p>I'am 22 year old self taught Software Developer live in Balikpapan, Indonesia.</p>
+          <p>I'am [[age]] year old self taught Software Developer live in Balikpapan, Indonesia.</p>
           <p>Learn programming since second grade in high school.</p>
           <p>Taking college in STMIK Balikpapan and right now i'm at the end of semester waiting for my graduation ceremony.</p>
           <p>I've worked with startups and some P2P project over the years.</p>
@@ -529,7 +516,8 @@
         </li>
       </ul>
     </section>
-    <footer>
+    </div>
+    <div id="footer">
       <div class="top">
         <div class="contact">
           <h5>Contact</h5>
@@ -550,11 +538,33 @@
         <span>© 2017. All Rights Reserved.</span>
         <span>Designed by Muhammad Sayuti.</span>
       </div>
-    </footer>
+    </div>
   </template>
   <script>
   Polymer({
     is:'portofolio-page',
+    properties:{
+      route:Object,
+      age:{
+        type:Number,
+        computed:'computeAge(route)'
+	  }
+	},
+	computeAge:function(route){
+		var now = new Date();
+		var born = new Date('10-25-1994');
+		console.log(now.toString());
+		var age = now.getFullYear() - born.getFullYear();
+
+  	  if (now.getMonth() < born.getMonth() - 1){
+	    	age--;
+	    }
+
+  	  if (born.getMonth() - 1 == now.getMonth() && now.getDate() < born.getDate()){
+    		age--;
+	 	}
+  	   return age;
+    },
     ready:function(){
       document.addEventListener('scroll',this.onScroll.bind(this));
       this.displayMap();

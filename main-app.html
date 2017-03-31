@@ -8,6 +8,8 @@
 <link rel="import" href="bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="bower_components/app-layout/helpers/helpers.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+<link rel="import" href="bower_components/app-route/app-location.html">
 <link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="bower_components/paper-item/paper-item.html">
@@ -25,15 +27,21 @@
 <dom-module id="main-app">
   <template>
     <style>
-      :host{
+      :host,iron-pages{
         display:block;
         min-height:100vh;
-        width:100%;
+        min-width:100%;
       }
     </style>
-    
+    <app-location route="{{route}}"></app-location>
+    <app-route
+		route="[[route]]"
+		pattern=":/page"
+		data="{{routeData}}"
+		tail="{{subroute}}">
+	</app-route>
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="portofolio">
-      <portofolio-page name="portofolio"></portofolio-page>
+      <portofolio-page name="portofolio" route="[[subroute]]"></portofolio-page>
     </iron-pages>
   </template>
   <script>
@@ -55,7 +63,7 @@
     _pageChanged:function(page){
       
     },
-    _routePageChanged:function(){
+    _routePageChanged:function(page){
       this.page = page || 'portofolio';
     }
   })
