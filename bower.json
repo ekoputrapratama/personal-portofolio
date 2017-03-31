@@ -1,0 +1,15 @@
+{
+  "name": "muhammadsayuti.github.io",
+  "homepage": "https://github.com/muhammadsayuti/muhammadsayuti.github.io",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "^1.8.1",
+    "iron-elements": "^1.0.10",
+    "paper-elements": "^1.0.7"
+  },
+  "authors": [
+    "Muhammad Sayuti <muhammad.sayuti94@gmail.com>"
+  ]
+}
