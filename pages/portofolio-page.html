@@ -335,12 +335,20 @@
           max-width: 100%;
           justify-content:center;
         }
+	section#portofolio .grid{
+          @apply(--layout-vertical);
+          @apply(--layout-wrap);
+          @apply(--layout-center-justified);
+          @apply(--layout-center);
+          width:100%;
+        }
 	.grid li.portofolio-item{
           -webkit-flex-basis: 100%;
           flex-basis: 100%;
           width:100%;
           margin:10px;
         }
+	
       }
       
       @media (min-width: 650px) and (max-width: 922px){
@@ -349,6 +357,13 @@
           flex-basis: 50%;
           max-width: 50%;
         }
+	section#portofolio .grid{
+          @apply(--layout-vertical);
+          @apply(--layout-wrap);
+          @apply(--layout-center-justified);
+          @apply(--layout-center);
+          width:100%;
+        }
 	.grid li.portofolio-item{
           -webkit-flex-basis: 100%;
           flex-basis: 100%;
