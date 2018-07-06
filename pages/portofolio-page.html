@@ -692,19 +692,17 @@
         this.scrollTo(selected);
       },
       scrollTo: function (id) {
-        var MIN_PIXELS_PER_STEP = 16;
-        var MAX_SCROLL_STEPS = 30;
+        const MIN_PIXELS_PER_STEP = 16;
+        const MAX_SCROLL_STEPS = 30;
 
         const scroller = document.body;
         const target = this.querySelector(id);
         const targetY = target.offsetTop;
 
-        console.log('scrollTop', targetY)
+        const pixelsPerStep = Math.max(MIN_PIXELS_PER_STEP,
+          Math.abs((targetY - scroller.scrollTop) / MAX_SCROLL_STEPS));
 
-        var pixelsPerStep = Math.max(MIN_PIXELS_PER_STEP,
-          (targetY - scroller.scrollTop) / MAX_SCROLL_STEPS);
-
-        var stepFunc = function () {
+        const stepFunc = function () {
           const current = scroller.scrollTop;
 
           if (current < targetY) {
@@ -714,14 +712,12 @@
             scroller.scrollTop = Math.max(targetY, scroller.scrollTop - pixelsPerStep);
           }
           if ((current < targetY && scroller.scrollTop >= targetY) || (current > targetY && scroller.scrollTop === targetY)) {
-            console.log('stop scroll')
             return;
           }
           window.requestAnimationFrame(stepFunc);
         };
 
         window.requestAnimationFrame(stepFunc);
-        // Polymer.AppLayout.scroll({ top: scrollTop, behavior: 'smooth' });
       },
       displayMap: function () {
         var point = new google.maps.LatLng(-1.2284667, 116.8186361);
