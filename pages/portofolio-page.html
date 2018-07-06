@@ -1,4 +1,3 @@
-
 <dom-module id="portofolio-page">
   <template>
     <style>
@@ -7,7 +6,7 @@
         position: relative;
         padding-top: 64px;
         min-height: 100vh;
-	min-width:100vw;
+        min-width: 100vw;
         --app-primary-color: #202020;
         --app-secondary-color: #757575;
         --app-accent-color: #172C50;
@@ -26,20 +25,25 @@
           box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
           height: 10px;
           bottom: -10px;
-        };
+        }
+        ;
       }
-      .container{
-        display:block;
-        width:100%;
-	  }
-      .navigation iron-selector{
-        display:flex;
-        flex-flow:row;
+
+      .container {
+        display: block;
+        width: 100%;
       }
-      .iron-selected{
-        font-weight:bold;
-        background-color:rgba(0,0,0,.1);
+
+      .navigation iron-selector {
+        display: flex;
+        flex-flow: row;
       }
+
+      .iron-selected {
+        font-weight: bold;
+        background-color: rgba(0, 0, 0, .1);
+      }
+
       paper-icon-button {
         color: var(--app-primary-color);
       }
@@ -71,9 +75,9 @@
       [hidden] {
         display: none !important;
       }
-      
+
       .grid {
-        width:100%;
+        width: 100%;
         @apply(--layout-horizontal);
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
@@ -83,164 +87,171 @@
       }
 
       .grid li {
-        display:flex;
-        display:-webkit-flex;
-        justify-content:center;
-        margin:10px 0px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        margin: 10px 0px;
       }
 
       .grid a {
-        display:block;
+        display: block;
         text-decoration: none;
       }
-      
-      paper-item{
-        cursor:pointer;
+
+      paper-item {
+        cursor: pointer;
       }
-      
-      section{
-        padding:75px;
-        max-width:100%;
+
+      section {
+        padding: 75px;
+        max-width: 100%;
       }
-      
-      section h4{
-        margin-bottom:20px;
-        text-align:center;
+
+      section h4 {
+        margin-bottom: 20px;
+        text-align: center;
       }
-      
-      section#skills{
+
+      section#skills {
         @apply(--layout-vertical);
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
         @apply(--layout-center);
-        max-width:100%;
+        max-width: 100%;
       }
-      section#certifications{
-        @apply(--layout-vertical);
+
+      section#certifications {
+        @apply(--layout-vertical);
         @apply(--layout-wrap);
         @apply(--layout-center-justified);
         @apply(--layout-center);
-        width:100%;
-      }
-      section#about{
-        font-size:20px;
+        width: 100%;
+      }
+
+      section#about {
+        font-size: 20px;
         @apply(--layout-vertical);
-        max-width:100%;
-        background-color:#01D6FE;
-        color:#fff;
-        border-bottom:7px solid #1591A7;
+        max-width: 100%;
+        background-color: #01D6FE;
+        color: #fff;
+        border-bottom: 7px solid #1591A7;
       }
-      
-      section#about .img-container{
-        display:flex;
-        justify-content:center;
-        margin-bottom:20px;
+
+      section#about .img-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
       }
-      
-      section#about .profile{
-        max-width:100%;
+
+      section#about .profile {
+        max-width: 100%;
       }
-      
-      section#about > .social-media-links{
-        position:relative;
-        display:inline-block;
-        margin-top:20px;
-        padding:0;
-        left:0;
-        margin:0;
+
+      section#about>.social-media-links {
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+        padding: 0;
+        left: 0;
+        margin: 0;
       }
-      
-      .social-media-links > a i{
-        height:30px;
-        width:30px;  
+
+      .social-media-links>a i {
+        height: 30px;
+        width: 30px;
       }
-      
-      .social-media-links > a{
-        text-decoration:none;
-        color:#FFF;
-        font-size:30px;
-        padding:10px;
-        border:2px solid #FFF;
-        border-radius:50%;
-        text-align:center;
+
+      .social-media-links>a {
+        text-decoration: none;
+        color: #FFF;
+        font-size: 30px;
+        padding: 10px;
+        border: 2px solid #FFF;
+        border-radius: 50%;
+        text-align: center;
         /*margin:0 10px;*/
       }
-      
-      .social-media-links a:hover{
-        background-color:#FFF;
-        color:#01D6FE;
+
+      .social-media-links a:hover {
+        background-color: #FFF;
+        color: #01D6FE;
       }
-      
-      .grid li.skill-item{
-        max-width:33.3333%;
-        margin:10px;
+
+      .grid li.skill-item {
+        max-width: 33.3333%;
+        margin: 10px;
       }
-      
-      .grid li.portofolio-item{
+
+      .grid li.portofolio-item {
         -webkit-flex-basis: 47%;
         flex-basis: 47%;
-        width:47%;
-        margin:10px;
+        width: 47%;
+        margin: 10px;
       }
-      
-      .portofolio-item paper-card{
-	width:100%;
-        --paper-card-header:{
-          display:flex;
-          display:-webkit-flex;
-          justify-content:center;
-          min-height:151px;
-          max-height:300px;
-	  
-          overflow:hidden;
+
+      .portofolio-item paper-card {
+        width: 100%;
+        --paper-card-header: {
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          min-height: 151px;
+          max-height: 300px;
+
+          overflow: hidden;
         }
-        --paper-card-header-image:{
-          height:100%;
-          background-size:cover;
-        }
-      }
-      
-      .portofolio-item .card-action{
-        padding:10px;
-      }
-	.portofolio-item .card-content{
-		text-align:left;
-		padding:0;
-	}
-	.portofolio-item .card-content h4{
-		margin:10px 0;
-	}
-	.portofolio-item .card-action h4{
-		text-align:left;
-		font-weight:400;
-		margin-top:0;
-		margin-bottom:10px;
-	}
-      .badge{
-        padding:5px 10px;
-        border-radius:4px;
-	  }
-      .portofolio-item .card-action .tag{
-        background-color:#01D6FE;
-        color:#FFF;
-      }
-      
-      .skill-item paper-card{
-        --paper-card-header:{
-          display:flex;
-          display:-webkit-flex;
-          justify-content:center;
-          align-items:center;
-          padding:20px;
-          height:200px;
-          width:200px;
+        --paper-card-header-image: {
+          height: 100%;
+          background-size: cover;
         }
       }
-      
-      .pic{
-        max-height:300px;
+
+      .portofolio-item .card-action {
+        padding: 10px;
       }
-      
+
+      .portofolio-item .card-content {
+        text-align: left;
+        padding: 0;
+      }
+
+      .portofolio-item .card-content h4 {
+        margin: 10px 0;
+      }
+
+      .portofolio-item .card-action h4 {
+        text-align: left;
+        font-weight: 400;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .badge {
+        padding: 5px 10px;
+        border-radius: 4px;
+      }
+
+      .portofolio-item .card-action .tag {
+        background-color: #01D6FE;
+        color: #FFF;
+      }
+
+      .skill-item paper-card {
+        --paper-card-header: {
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+          height: 200px;
+          width: 200px;
+        }
+      }
+
+      .pic {
+        max-height: 300px;
+      }
+
       hr.style-eight {
         padding: 0;
         border: none;
@@ -248,7 +259,7 @@
         color: #FFF;
         text-align: center;
       }
-      
+
       hr.style-eight:after {
         content: "§";
         display: inline-block;
@@ -256,120 +267,124 @@
         top: -0.9em;
         font-size: 1.5em;
         padding: 0 0.25em;
-        background-color:#01D6FE;
+        background-color: #01D6FE;
       }
-      
-      #footer > a {
+
+      #footer>a {
         color: var(--app-secondary-color);
         text-decoration: none;
       }
 
-      #footer > a:hover {
+      #footer>a:hover {
         text-decoration: underline;
       }
-     #footer{
+
+      #footer {
         margin-top: 20px;
-        
-        display:block;
-		max-width:100%;
-        position:relative;  
+
+        display: block;
+        max-width: 100%;
+        position: relative;
       }
-      
-      #footer .top{
+
+      #footer .top {
         @apply(--layout-horizontal);
-        max-height:600px;
-        max-width:100%;
-        padding:0 20px;
-        text-align:left;
-        background-color:#3DC1D8;
-        color:#FFF;
+        max-height: 600px;
+        max-width: 100%;
+        padding: 0 20px;
+        text-align: left;
+        background-color: #3DC1D8;
+        color: #FFF;
       }
-      
-      #footer .top h5{
-        text-align:center;
+
+      #footer .top h5 {
+        text-align: center;
       }
-      
-      #footer .top > *{
-        flex-basis:50%;
-        min-width:49%;
-        padding:20px 10px;
+
+      #footer .top>* {
+        flex-basis: 50%;
+        min-width: 49%;
+        padding: 20px 10px;
       }
-      
-      .contact paper-input,.contact paper-textarea{
-        --paper-input-container-color:#FFF;
-        --paper-input-container-focus-color:#FFF;
-        --paper-input-container-underline:{
-          color:#FFF;    
+
+      .contact paper-input,
+      .contact paper-textarea {
+        --paper-input-container-color: #FFF;
+        --paper-input-container-focus-color: #FFF;
+        --paper-input-container-underline: {
+          color: #FFF;
         }
-        --paper-input-container-label-floating:{
-          color:#FFF:
+        --paper-input-container-label-floating: {
+          color: #FFF:
         }
-        --paper-input-container-underline-focus:{
+        --paper-input-container-underline-focus: {
           border-bottom: 2px solid #2D2D2D;
         }
       }
-      
-      .contact paper-button{
-        background-color:#FFF;
-        color:#000;
+
+      .contact paper-button {
+        background-color: #FFF;
+        color: #000;
       }
-      
-      #map{
-        height:370px ;
-        width:100%;
+
+      #map {
+        height: 370px;
+        width: 100%;
       }
-      
-      #footer .bottom{
+
+      #footer .bottom {
         @apply(--layout-vertical);
-        text-align:center;
-        width:100%;
-        padding:10px 0;
-        background-color:#1591A7;
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        background-color: #1591A7;
       }
-      
-      #footer .bottom span{
-        color:#FFF;
+
+      #footer .bottom span {
+        color: #FFF;
       }
+
       /* small screen */
+
       @media (max-width: 767px) {
         :host {
           padding-top: 64px;
         }
-        
+
         .menu-btn {
           display: block;
         }
       }
-      
-      @media (max-width: 650px){
-        .grid  li {
+
+      @media (max-width: 650px) {
+        .grid li {
           -webkit-flex-basis: 100%;
           flex-basis: 100%;
           max-width: 100%;
-          justify-content:center;
+          justify-content: center;
         }
-	section#portofolio .grid{
-          @apply(--layout-vertical);
+        section#portofolio .grid {
+          @apply(--layout-vertical);
           @apply(--layout-wrap);
           @apply(--layout-center-justified);
           @apply(--layout-center);
-          width:100%;
-        }
-	.grid li.portofolio-item{
-	  min-width:100%;
-          width:100%;
-          margin:10px;
+          width: 100%;
         }
-	
+        .grid li.portofolio-item {
+          min-width: 100%;
+          width: 100%;
+          margin: 10px;
+        }
+
       }
-      
-      @media (min-width: 650px) and (max-width: 922px){
-        .grid  li {
+
+      @media (min-width: 650px) and (max-width: 922px) {
+        .grid li {
           -webkit-flex-basis: 50%;
           flex-basis: 50%;
           max-width: 50%;
         }
-	/*section#portofolio .grid{
+        /*section#portofolio .grid{
           @apply(--layout-vertical);
           @apply(--layout-wrap);
           @apply(--layout-center-justified);
@@ -390,7 +405,9 @@
         <div class="left-bar-item">
           <a class="back-btn" href="#" tabindex="-1"></a>
         </div>
-        <div class="title" main-title><a href="#" aria-label="Muhammad Sayuti">Muhammad Sayuti</a></div>
+        <div class="title" main-title>
+          <a href="#" aria-label="Muhammad Sayuti">Muhammad Sayuti</a>
+        </div>
         <nav class="navigation">
           <iron-selector on-iron-select="selectedMenuChanged">
             <paper-item name="#about">
@@ -407,181 +424,194 @@
       </app-toolbar>
     </app-header>
     <div class="container">
-    <section id="about">
-      <h4 class="text-center">About Me</h4>
-      <div class="profile row">
-        <div class="col-sm-12 col-md-5 img-container">
-          <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d"/>
-        </div>
-        <div class="col-sm-12 col-md-7">
-          <p>I'am [[age]] year old self taught Software Developer live in Balikpapan, Indonesia.</p>
-          <p>Learn programming since second grade in high school.</p>
-          <p>Graduated from STMIK Balikpapan in 2017.</p>
-          <p>I've worked with startups and some P2P project over the years.</p>
-          <hr class="style-eight" />
-          <h5>Follow me on:</h5>
-          <div class="social-media-links">
-            <a target="_blank" href="//github.com/muhammadsayuti"><i class="fa fa-github"></i></a>
-            <a target="_blank" href="//twitter.com/msayuti94"><i class="fa fa-twitter"></i></a>
-            <a target="_blank" href="//www.linkedin.com/in/muhammad-sayuti-74365b10a/"><i class="fa fa-linkedin"></i></a>
+      <section id="about">
+        <h4 class="text-center">About Me</h4>
+        <div class="profile row">
+          <div class="col-sm-12 col-md-5 img-container">
+            <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d"
+            />
           </div>
+          <div class="col-sm-12 col-md-7">
+
+            <p>I'am [[age]] year old self taught Software Developer live in Balikpapan, Indonesia.</p>
+            <p>Learn programming since second grade in high school.</p>
+            <p>Graduated from STMIK Balikpapan in 2017.</p>
+            <p>I've worked with startups and some P2P project over the years.</p>
+            <hr class="style-eight" />
+            <h5>Follow me on:</h5>
+            <div class="social-media-links">
+
+              <a target="_blank" href="//github.com/muhammadsayuti">
+                <i class="fa fa-github"></i>
+              </a>
+              <a target="_blank" href="//twitter.com/msayuti94">
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a target="_blank" href="//www.linkedin.com/in/muhammad-sayuti-74365b10a/">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+
         </div>
-        
-      </div>
-    </section>
-    <section id="certifications">
-      <h4>Certifications</h4>
-      <ul class="grid">
-        <li class="cert-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FFront-end-certification.jpg?alt=media&token=54cd429b-28bb-48b2-88a5-92c38e3911e6" heading="Freecodecamp: Front End Certificate"></paper-card>
-        <li>
-      </ul>
-    </section>
-    <section id="skills">
-      <h4>Skills</h4>
-      <ul class="grid">
-        <li class="skill-item">
-          <paper-card image="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png">
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fcss3.png?alt=media&token=6f31a9df-1c5f-46d1-b87f-9e3fee6e794b">
+      </section>
+      <section id="certifications">
 
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fjs.png?alt=media&token=0e30faeb-8c15-452f-8b8b-a08e15077290">
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/200px-PHP-logo.svg.png">
+        <h4>Certifications</h4>
 
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="http://shaman.uy/static/images/net.png">
+        <ul class="grid">
+          <li class="cert-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FFront-end-certification.jpg?alt=media&token=54cd429b-28bb-48b2-88a5-92c38e3911e6"
+              heading="Freecodecamp: Front End Certificate">
+            </paper-card>
+            <li>
+        </ul>
+      </section>
+      <section id="skills">
+        <h4>Skills</h4>
+        <ul class="grid">
+          <li class="skill-item">
+            <paper-card image="/images/HTML5.png">
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fcss3.png?alt=media&token=6f31a9df-1c5f-46d1-b87f-9e3fee6e794b">
 
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://www.keizu.co.jp/ksvc/img/portfolio/ksvc/nodejs-logo_0.png">
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="http://ourcodeworld.com/public-media/gallery/categorielogo-5713d3560b152.png">
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FMySQL-Logo.png?alt=media&token=ea21487d-1ee3-4d5b-aff0-dcc865a625c4">
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Microsoft_Access_2013_logo.svg/1043px-Microsoft_Access_2013_logo.svg.png">
-            
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="http://therealdanvega.com/wp-content/uploads/2016/01/java.png">
-            
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://camo.githubusercontent.com/5dd01312b30468423cb45b582b83773f5a9019bb/687474703a2f2f656c656374726f6e2e61746f6d2e696f2f696d616765732f656c656374726f6e2d6c6f676f2e737667">
-            
-          </paper-card>
-        </li>
-        <li class="skill-item">
-          <paper-card image="https://oracle-base.com/blog/wp-content/uploads/2017/02/SQL-Server-2012.png">
-            
-          </paper-card>
-        </li>
-      </ul>
-    </section>
-    <section id="portofolio">
-      <h4 class="text-center">Portofolio</h4>
-      <ul class="grid">
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio2.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Online Radio Streaming</h4>
-		</div>
-            <div class="card-action">
-		<h4>Technology stack</h4>
-              <span class="badge tag">Java</span>
-              <span class="badge tag">Android</span>
-              <span class="badge tag">SQLite</span>
-            </div>
-          </paper-card>
-        </li>
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio3.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Delivery Management System</h4>
-		</div>
-            <div class="card-action">
-		<h4>Technology stack</h4>
-              <span class="badge tag">.NET</span>
-              <span class="badge tag">Visual Basic</span>
-              <span class="badge tag">MySQL</span>
-            </div>
-          </paper-card>
-        </li>
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio4.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Employee Management System</h4>
-		 </div>
-            <div class="card-action">
-		<h4>Technology stack</h4>
-              <span class="badge tag">.NET</span>
-              <span class="badge tag">Visual Basic</span>
-              <span class="badge tag">MySQL</span>
-            </div>
-          </paper-card>
-        </li>
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio6.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Inventory Management System</h4>
-		</div>
-            <div class="card-action">
-		<h4>Technology stack</h4>
-              <span class="badge tag">.NET</span>
-              <span class="badge tag">Visual Basic</span>
-              <span class="badge tag">C#</span>
-              <span class="badge tag">SQL Server</span>
-            </div>
-          </paper-card>
-        </li>
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio7.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Point Of Sale Management System</h4>
-		</div>
-            <div class="card-action">
-		<h4>Technology stack</h4>
-              <span class="badge tag">.NET</span>
-              <span class="badge tag">Visual Basic</span>
-              <span class="badge tag">MySQL</span>
-              <span class="badge tag">Access</span>
-            </div>
-          </paper-card>
-        </li>
-        <li class="portofolio-item">
-          <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio8.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
-		<div class="card-content">
-		  <h4>Localization Management System</h4>
-		</div>
-            <div class="card-action">
-		    <h4>Technology stack</h4>
-              <span class="badge tag">PHP</span>
-              <span class="badge tag">CodeIgniter</span>
-              <span class="badge tag">MySQL</span>
-            </div>
-          </paper-card>
-        </li>
-      </ul>
-    </section>
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fjs.png?alt=media&token=0e30faeb-8c15-452f-8b8b-a08e15077290">
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/200px-PHP-logo.svg.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/net.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/nodejs.png">
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/cordova.png">
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FMySQL-Logo.png?alt=media&token=ea21487d-1ee3-4d5b-aff0-dcc865a625c4">
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/access.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/java.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/electron.svg">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/sql-server.png">
+
+            </paper-card>
+          </li>
+        </ul>
+      </section>
+      <section id="portofolio">
+        <h4 class="text-center">Portofolio</h4>
+        <ul class="grid">
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio2.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Online Radio Streaming</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">Java</span>
+                <span class="badge tag">Android</span>
+                <span class="badge tag">SQLite</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio3.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Delivery Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">.NET</span>
+                <span class="badge tag">Visual Basic</span>
+                <span class="badge tag">MySQL</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio4.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Employee Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">.NET</span>
+                <span class="badge tag">Visual Basic</span>
+                <span class="badge tag">MySQL</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio6.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Inventory Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">.NET</span>
+                <span class="badge tag">Visual Basic</span>
+                <span class="badge tag">C#</span>
+                <span class="badge tag">SQL Server</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio7.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Point Of Sale Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">.NET</span>
+                <span class="badge tag">Visual Basic</span>
+                <span class="badge tag">MySQL</span>
+                <span class="badge tag">Access</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio8.png?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
+              <div class="card-content">
+                <h4>Localization Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">PHP</span>
+                <span class="badge tag">CodeIgniter</span>
+                <span class="badge tag">MySQL</span>
+              </div>
+            </paper-card>
+          </li>
+        </ul>
+      </section>
     </div>
     <div id="footer">
       <div class="top">
@@ -596,7 +626,7 @@
         <div class="map">
           <h5>Where i live</h5>
           <div id="map">
-            
+
           </div>
         </div>
       </div>
@@ -607,73 +637,71 @@
     </div>
   </template>
   <script>
-  Polymer({
-    is:'portofolio-page',
-    properties:{
-      route:Object,
-      age:{
-        type:Number,
-        computed:'computeAge(route)'
-	  }
-	},
-	computeAge:function(route){
-		var now = new Date();
-		var born = new Date('10-25-1994');
-		console.log(now.toString());
-		var age = now.getFullYear() - born.getFullYear();
-
-  	  if (now.getMonth() < born.getMonth() - 1){
-	    	age--;
-	    }
-
-  	  if (born.getMonth() - 1 == now.getMonth() && now.getDate() < born.getDate()){
-    		age--;
-	 	}
-  	   return age;
-    },
-    ready:function(){
-      document.addEventListener('scroll',this.onScroll.bind(this));
-      this.displayMap();
-    },
-    onScroll:function(e){
-      const scroller = e.target.scrollingElement;
-      const scrollTop = scroller.scrollTop;
-      // this.checkScrollPosition(scrollTop);
-    },
-    checkScrollPosition:function(scrollTop){
-      const sections = Array.from(this.querySelectorAll('section'));
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-
-        if(scrollTop === sectionTop){
-          const selector = this.querySelector('iron-selector');
-
-          selector.selected = `#${section.id}`;
+    Polymer({
+      is: 'portofolio-page',
+      properties: {
+        route: Object,
+        age: {
+          type: Number,
+          computed: 'computeAge(route)'
         }
-      });
-    },
-    selectedMenuChanged:function(e){
-      const selected = e.detail.item.getAttribute('name');
-      this.scrollTo(selected);
-    },
-    scrollTo:function(id){
-      const target = this.querySelector(id);
-      const scrollTop = target.offsetTop;
-      Polymer.AppLayout.scroll({ top: scrollTop, behavior: 'smooth' });
-    },
-    displayMap:function(){
-      var point = new google.maps.LatLng(-1.2284667,116.8186361);
-      var options = {
-        zoom: 12,
-        center: point
-      };
-      var map = new google.maps.Map(this.$$('#map'), options);
-      var marker = new google.maps.Marker({
-        position: point,
-        map: map
-      });
-    }
-  });
+      },
+      computeAge: function (route) {
+        var now = new Date();
+        var born = new Date('10-25-1994');
+        var age = now.getFullYear() - born.getFullYear();
+
+        if (now.getMonth() < born.getMonth() - 1) {
+          age--;
+        }
+
+        if (born.getMonth() - 1 == now.getMonth() && now.getDate() < born.getDate()) {
+          age--;
+        }
+        return age;
+      },
+      ready: function () {
+        document.addEventListener('scroll', this.onScroll.bind(this));
+        this.displayMap();
+      },
+      onScroll: function (e) {
+        const scroller = e.target.scrollingElement;
+        const scrollTop = scroller.scrollTop;
+      },
+      checkScrollPosition: function (scrollTop) {
+        const sections = Array.from(this.querySelectorAll('section'));
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+
+          if (scrollTop === sectionTop) {
+            const selector = this.querySelector('iron-selector');
+
+            selector.selected = `#${section.id}`;
+          }
+        });
+      },
+      selectedMenuChanged: function (e) {
+        const selected = e.detail.item.getAttribute('name');
+        this.scrollTo(selected);
+      },
+      scrollTo: function (id) {
+        const target = this.querySelector(id);
+        const scrollTop = target.offsetTop;
+        Polymer.AppLayout.scroll({ top: scrollTop, behavior: 'smooth' });
+      },
+      displayMap: function () {
+        var point = new google.maps.LatLng(-1.2284667, 116.8186361);
+        var options = {
+          zoom: 12,
+          center: point
+        };
+        var map = new google.maps.Map(this.$$('#map'), options);
+        var marker = new google.maps.Marker({
+          position: point,
+          map: map
+        });
+      }
+    });
   </script>
 </dom-module>
