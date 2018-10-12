@@ -1,9 +1,7 @@
-
-
 <link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/paper-card/paper-card.html">
-<link rel="import" href="bower_components/app-layout/app-route/app-route.html">
-<link rel="import" href="bower_components/app-layout/app-route/app-location.html">
+<link rel="import" href="bower_components/app-route/app-route.html">
+<link rel="import" href="bower_components/app-route/app-location.html">
 <link rel="import" href="bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="bower_components/app-layout/app-scroll-effects/effects/waterfall.html">
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
@@ -27,45 +25,42 @@
 <dom-module id="main-app">
   <template>
     <style>
-      :host,iron-pages{
-        display:block;
-        min-height:100vh;
-        min-width:100%;
+      :host,
+      iron-pages {
+        display: block;
+        min-height: 100vh;
+        min-width: 100%;
       }
     </style>
     <app-location route="{{route}}"></app-location>
-    <app-route
-		route="[[route]]"
-		pattern=":/page"
-		data="{{routeData}}"
-		tail="{{subroute}}">
-	</app-route>
+    <app-route route="[[route]]" pattern=":/page" data="{{routeData}}" tail="{{subroute}}">
+    </app-route>
     <iron-pages selected="[[page]]" attr-for-selected="name" fallback-selection="portofolio">
       <portofolio-page name="portofolio" route="[[subroute]]"></portofolio-page>
     </iron-pages>
   </template>
   <script>
-  Polymer({
-    is:'main-app',
-    properties:{
-      page:{
-        type:String,
-        observer:'_pageChanged'
+    Polymer({
+      is: 'main-app',
+      properties: {
+        page: {
+          type: String,
+          observer: '_pageChanged'
+        }
+      },
+      observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+      created: function () {
+        window.performance && performance.mark && performance.mark('main-app.created');
+        this.removeAttribute('unresolved');
+      },
+      _pageChanged: function (page) {
+
+      },
+      _routePageChanged: function (page) {
+        this.page = page || 'portofolio';
       }
-    },
-    observers:[
-      '_routePageChanged(routeData.page)'
-    ],
-    created:function(){
-      window.performance && performance.mark && performance.mark('main-app.created');
-      this.removeAttribute('unresolved');
-    },
-    _pageChanged:function(page){
-      
-    },
-    _routePageChanged:function(page){
-      this.page = page || 'portofolio';
-    }
-  })
+    })
   </script>
 </dom-module>
