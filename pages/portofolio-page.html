@@ -22,15 +22,15 @@
       }
 
       app-header {
-        @apply(--layout-fixed-top);
+        @apply --layout-fixed-top;
         z-index: 1;
         background-color: rgba(255, 255, 255, 0.95);
+
         --app-header-shadow: {
           box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.2);
           height: 10px;
           bottom: -10px;
         }
-        ;
       }
 
       .container {
@@ -82,10 +82,10 @@
 
       .grid {
         width: 100%;
-        @apply(--layout-horizontal);
-        @apply(--layout-wrap);
-        @apply(--layout-center-justified);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-wrap;
+        @apply --layout-center-justified;
+        @apply --layout-center;
         padding: 0 10px 32px 10px;
         list-style: none;
       }
@@ -94,7 +94,7 @@
         display: flex;
         display: -webkit-flex;
         justify-content: center;
-        margin: 10px 0px;
+        /* margin: 10px 0px; */
       }
 
       .grid a {
@@ -117,26 +117,33 @@
       }
 
       section#skills {
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
-        @apply(--layout-center-justified);
-        @apply(--layout-center);
+        @apply --layout-vertical;
+        @apply --layout-wrap;
+        @apply --layout-center-justified;
+        @apply --layout-center;
         max-width: 100%;
         box-sizing: border-box;
       }
 
+      section#skills>.grid {
+        display: grid;
+        grid-template-columns: 240px 240px 240px 240px 240px;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 10px 10px;
+      }
+
       section#certifications {
-        @apply(--layout-vertical);
-        @apply(--layout-wrap);
-        @apply(--layout-center-justified);
-        @apply(--layout-center);
+        @apply --layout-vertical;
+        @apply --layout-wrap;
+        @apply --layout-center-justified;
+        @apply --layout-center;
         width: 100%;
         box-sizing: border-box;
       }
 
       section#about {
         font-size: 20px;
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
         max-width: 100%;
         background-color: #01D6FE;
         color: #fff;
@@ -153,21 +160,25 @@
         max-width: 100%;
       }
 
-      section#about>.social-media-links {
+      section#about .social-media-links {
+        box-sizing: border-box;
+        display: grid;
+        grid-template-columns: 50px 50px 50px;
+        grid-template-rows: 50px;
+        grid-gap: 10px;
+        flex-flow: row;
         position: relative;
-        display: inline-block;
+        /* display: inline-block; */
         margin-top: 20px;
         padding: 0;
         left: 0;
         margin: 0;
       }
 
-      .social-media-links>a i {
-        height: 30px;
-        width: 30px;
-      }
+      .social-media-links>a i {}
 
       .social-media-links>a {
+        box-sizing: border-box;
         text-decoration: none;
         color: #FFF;
         font-size: 30px;
@@ -175,18 +186,26 @@
         border: 2px solid #FFF;
         border-radius: 50%;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         /*margin:0 10px;*/
       }
+
+      /* .social-media-links>a:nth-child(2) {
+        padding: 10px 0px 10px 10px;
+        display: inline;
+      } */
 
       .social-media-links a:hover {
         background-color: #FFF;
         color: #01D6FE;
       }
 
-      .grid li.skill-item {
+      /* .grid li.skill-item {
         max-width: 33.3333%;
         margin: 10px;
-      }
+      } */
 
       .grid li.portofolio-item {
         -webkit-flex-basis: 47%;
@@ -197,6 +216,7 @@
 
       .portofolio-item paper-card {
         width: 100%;
+
         --paper-card-header: {
           display: flex;
           display: -webkit-flex;
@@ -206,6 +226,7 @@
 
           overflow: hidden;
         }
+
         --paper-card-header-image: {
           height: 100%;
           background-size: cover;
@@ -294,7 +315,7 @@
       }
 
       #footer .top {
-        @apply(--layout-horizontal);
+        @apply --layout-horizontal;
         max-height: 600px;
         max-width: 100%;
         padding: 0 20px;
@@ -317,12 +338,15 @@
       .contact paper-textarea {
         --paper-input-container-color: #FFF;
         --paper-input-container-focus-color: #FFF;
+
         --paper-input-container-underline: {
           color: #FFF;
         }
+
         --paper-input-container-label-floating: {
           color: #FFF:
         }
+
         --paper-input-container-underline-focus: {
           border-bottom: 2px solid #2D2D2D;
         }
@@ -339,7 +363,7 @@
       }
 
       #footer .bottom {
-        @apply(--layout-vertical);
+        @apply --layout-vertical;
         text-align: center;
         width: 100%;
         padding: 10px 0;
@@ -348,6 +372,27 @@
 
       #footer .bottom span {
         color: #FFF;
+      }
+
+      section#portofolio .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px 10px;
+      }
+
+      section#portofolio .grid>li {
+        height: 100%;
+        width: 100%;
+      }
+
+      section#portofolio .grid>li>paper-card {
+        display: flex;
+        flex-flow: column;
+
+        --paper-card-header: {
+          height: 180px;
+        }
       }
 
       /* small screen */
@@ -369,13 +414,15 @@
           max-width: 100%;
           justify-content: center;
         }
+
         section#portofolio .grid {
-          @apply(--layout-vertical);
-          @apply(--layout-wrap);
-          @apply(--layout-center-justified);
-          @apply(--layout-center);
+          @apply --layout-vertical;
+          @apply --layout-wrap;
+          @apply --layout-center-justified;
+          @apply --layout-center;
           width: 100%;
         }
+
         .grid li.portofolio-item {
           min-width: 100%;
           width: 100%;
@@ -390,6 +437,7 @@
           flex-basis: 50%;
           max-width: 50%;
         }
+
         /*section#portofolio .grid{
           @apply(--layout-vertical);
           @apply(--layout-wrap);
@@ -434,8 +482,7 @@
         <h4 class="text-center">About Me</h4>
         <div class="profile row">
           <div class="col-sm-12 col-md-5 img-container">
-            <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d"
-            />
+            <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d" />
           </div>
           <div class="col-sm-12 col-md-7">
 
@@ -470,7 +517,7 @@
             <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FFront-end-certification.jpg?alt=media&token=54cd429b-28bb-48b2-88a5-92c38e3911e6"
               heading="Freecodecamp: Front End Certificate">
             </paper-card>
-            <li>
+          <li>
         </ul>
       </section>
       <section id="skills">
@@ -616,6 +663,34 @@
               </div>
             </paper-card>
           </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FProjects%2Fmpayroll-screenshot.jpg?alt=media&token=23637934-a749-4c18-b911-ce28471ccdb2">
+              <div class="card-content">
+                <h4>Payroll Management System</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">Node.js</span>
+                <span class="badge tag">Electron.js</span>
+                <span class="badge tag">React.js</span>
+                <span class="badge tag">MongoDB</span>
+              </div>
+            </paper-card>
+          </li>
+          <li class="portofolio-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FProjects%2Fruncy-screenshot.jpg?alt=media&token=cb197c03-bc77-43aa-a463-a500b62061da">
+              <div class="card-content">
+                <h4>Store Management System (Desktop)</h4>
+              </div>
+              <div class="card-action">
+                <h4>Technology stack</h4>
+                <span class="badge tag">Node.js</span>
+                <span class="badge tag">Electron.js</span>
+                <span class="badge tag">React.js</span>
+                <span class="badge tag">Realm</span>
+              </div>
+            </paper-card>
+          </li>
         </ul>
       </section>
     </div>
@@ -716,8 +791,8 @@
           }
           window.requestAnimationFrame(stepFunc);
         };
-
-        window.requestAnimationFrame(stepFunc);
+        window.scrollTo(0, targetY)
+        // window.requestAnimationFrame(stepFunc);
       },
       displayMap: function () {
         var point = new google.maps.LatLng(-1.2284667, 116.8186361);
