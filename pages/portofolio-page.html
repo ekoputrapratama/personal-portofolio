@@ -5,6 +5,11 @@
         box-sizing: border-box;
       }
 
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+
       :host {
         display: block;
         position: relative;
@@ -19,6 +24,10 @@
         --paper-spinner-color: var(--app-accent-color);
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         color: var(--app-primary-color);
+      }
+
+      .text-center {
+        text-align: center;
       }
 
       app-header {
@@ -81,12 +90,7 @@
       }
 
       .grid {
-        width: 100%;
-        @apply --layout-horizontal;
-        @apply --layout-wrap;
-        @apply --layout-center-justified;
-        @apply --layout-center;
-        padding: 0 10px 32px 10px;
+        display: grid;
         list-style: none;
       }
 
@@ -94,7 +98,6 @@
         display: flex;
         display: -webkit-flex;
         justify-content: center;
-        /* margin: 10px 0px; */
       }
 
       .grid a {
@@ -107,8 +110,8 @@
       }
 
       section {
-        padding: 75px;
         max-width: 100%;
+        margin-bottom: 40px;
       }
 
       section h4 {
@@ -127,7 +130,7 @@
 
       section#skills>.grid {
         display: grid;
-        grid-template-columns: 240px 240px 240px 240px 240px;
+        grid-template-columns: 240px 240px;
         grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 10px 10px;
       }
@@ -141,6 +144,18 @@
         box-sizing: border-box;
       }
 
+      section#certifications>.grid {
+        grid-template-columns: 500px;
+      }
+
+      section#certifications>ul>li>paper-card {
+        --paper-card-header-image-text: {
+          background-color: rgba(0, 0, 0, 0.5);
+          color: #fff;
+          width: 100%;
+        }
+      }
+
       section#about {
         font-size: 20px;
         @apply --layout-vertical;
@@ -148,16 +163,61 @@
         background-color: #01D6FE;
         color: #fff;
         border-bottom: 7px solid #1591A7;
+        padding: 20px 0;
       }
 
       section#about .img-container {
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
+        height: 300px;
       }
 
       section#about .profile {
         max-width: 100%;
+        /* text-align: center; */
+        display: flex;
+        flex-flow: column;
+        overflow: visible;
+      }
+
+      section#about .wrapper {
+        padding: 0 20px;
+      }
+
+      section#about .wrapper:nth-child(1) {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+      }
+
+      section#about .wrapper:nth-child(1)>p {
+        margin: 10px 0;
+      }
+
+      section#about .wrapper:nth-child(1)>p:nth-child(1) {
+        margin-top: 1em;
+        margin-bottom: 10px;
+      }
+
+      hr.style-eight {
+        padding: 0;
+        border: none;
+        border-top: medium double #FFF;
+        color: #FFF;
+        text-align: center;
+        overflow: visible;
+        width: 100vw;
+      }
+
+      hr.style-eight:after {
+        content: "§";
+        display: inline-block;
+        position: relative;
+        top: -0.7em;
+        font-size: 1.5em;
+        padding: 0 0.25em;
+        background-color: #01D6FE;
       }
 
       section#about .social-media-links {
@@ -168,7 +228,6 @@
         grid-gap: 10px;
         flex-flow: row;
         position: relative;
-        /* display: inline-block; */
         margin-top: 20px;
         padding: 0;
         left: 0;
@@ -189,47 +248,39 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        /*margin:0 10px;*/
       }
-
-      /* .social-media-links>a:nth-child(2) {
-        padding: 10px 0px 10px 10px;
-        display: inline;
-      } */
 
       .social-media-links a:hover {
         background-color: #FFF;
         color: #01D6FE;
       }
 
-      /* .grid li.skill-item {
-        max-width: 33.3333%;
-        margin: 10px;
-      } */
-
-      .grid li.portofolio-item {
-        -webkit-flex-basis: 47%;
-        flex-basis: 47%;
-        width: 47%;
-        margin: 10px;
+      section#portofolio {
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
       }
 
-      .portofolio-item paper-card {
+      section#portofolio .grid {
+        display: grid;
+        grid-template-columns: 490px;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px 10px;
+      }
+
+      section#portofolio .grid>li {
+        height: 100%;
+        width: 100%;
+      }
+
+      section#portofolio .grid>li>paper-card {
+        display: flex;
+        flex-flow: column;
         width: 100%;
 
         --paper-card-header: {
-          display: flex;
-          display: -webkit-flex;
-          justify-content: center;
-          min-height: 151px;
-          max-height: 300px;
-
-          overflow: hidden;
-        }
-
-        --paper-card-header-image: {
-          height: 100%;
-          background-size: cover;
+          height: 180px;
         }
       }
 
@@ -279,23 +330,7 @@
         max-height: 300px;
       }
 
-      hr.style-eight {
-        padding: 0;
-        border: none;
-        border-top: medium double #FFF;
-        color: #FFF;
-        text-align: center;
-      }
 
-      hr.style-eight:after {
-        content: "§";
-        display: inline-block;
-        position: relative;
-        top: -0.9em;
-        font-size: 1.5em;
-        padding: 0 0.25em;
-        background-color: #01D6FE;
-      }
 
       #footer>a {
         color: var(--app-secondary-color);
@@ -374,30 +409,31 @@
         color: #FFF;
       }
 
-      section#portofolio .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-gap: 10px 10px;
-      }
 
-      section#portofolio .grid>li {
-        height: 100%;
-        width: 100%;
-      }
-
-      section#portofolio .grid>li>paper-card {
-        display: flex;
-        flex-flow: column;
-
-        --paper-card-header: {
-          height: 180px;
-        }
-      }
 
       /* small screen */
+      @media (min-width: 600px) {
+        section#skills>.grid {
+          display: grid;
+          grid-template-columns: 240px 240px;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-gap: 10px 10px;
+        }
 
-      @media (max-width: 767px) {
+        section#certifications {
+          padding: 10px;
+        }
+
+        section#certifications>.grid {
+          grid-template-columns: 500px;
+          width: auto;
+        }
+
+        section#portofolio>.grid {
+          grid-template-columns: 500px;
+          width: auto;
+        }
+
         :host {
           padding-top: 64px;
         }
@@ -405,52 +441,69 @@
         .menu-btn {
           display: block;
         }
+
+        section#about .wrapper {
+          padding: 0 75px;
+        }
       }
 
-      @media (max-width: 650px) {
-        .grid li {
-          -webkit-flex-basis: 100%;
-          flex-basis: 100%;
-          max-width: 100%;
+      /* small desktop */
+      @media (min-width:768px) {
+        section#skills>.grid {
+          display: grid;
+          grid-template-columns: 240px 240px 240px;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-gap: 10px 10px;
+        }
+
+        section#certifications>.grid {
+          grid-template-columns: 360px 360px;
+        }
+
+        section#portofolio>.grid {
+          grid-template-columns: 360px 360px;
+        }
+      }
+
+
+      @media (min-width: 1080px) {
+        section#skills>.grid {
+          display: grid;
+          grid-template-columns: 240px 240px 240px 240px;
+          grid-template-rows: 1fr 1fr 1fr;
+          grid-gap: 10px 10px;
+        }
+
+        section#certifications>.grid {
+          grid-template-columns: 490px 490px;
+          width: auto;
+        }
+
+        section#portofolio>.grid {
+          grid-template-columns: 490px 490px;
+          width: auto;
+        }
+
+        section#about .profile {
+          flex-flow: row;
           justify-content: center;
         }
 
-        section#portofolio .grid {
-          @apply --layout-vertical;
-          @apply --layout-wrap;
-          @apply --layout-center-justified;
-          @apply --layout-center;
+        section#about .img-container {
+          width: 200px;
+        }
+
+        section#about .profile>.content {
+          margin-left: 40px;
+        }
+
+        section#about .wrapper {
+          padding: 0;
+        }
+
+        hr.style-eight {
           width: 100%;
         }
-
-        .grid li.portofolio-item {
-          min-width: 100%;
-          width: 100%;
-          margin: 10px;
-        }
-
-      }
-
-      @media (min-width: 650px) and (max-width: 922px) {
-        .grid li {
-          -webkit-flex-basis: 50%;
-          flex-basis: 50%;
-          max-width: 50%;
-        }
-
-        /*section#portofolio .grid{
-          @apply(--layout-vertical);
-          @apply(--layout-wrap);
-          @apply(--layout-center-justified);
-          @apply(--layout-center);
-          width:100%;
-        }
-	.grid li.portofolio-item{
-          -webkit-flex-basis: 100%;
-          flex-basis: 100%;
-          width:100%;
-          margin:10px;
-        }*/
       }
     </style>
     <app-route route="[[route]]"></app-route>
@@ -479,30 +532,33 @@
     </app-header>
     <div class="container">
       <section id="about">
-        <h4 class="text-center">About Me</h4>
+        <h2 class="text-center">About Me</h2>
         <div class="profile row">
-          <div class="col-sm-12 col-md-5 img-container">
+          <div class="img-container">
             <img class="pic img-responsive" src="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2FFoto_332x500.jpg?alt=media&token=27812b06-3bfa-4f23-8226-e8a266eed76d" />
           </div>
-          <div class="col-sm-12 col-md-7">
-
-            <p>I'am [[age]] year old self taught Software Developer live in Balikpapan, Indonesia.</p>
-            <p>Learn programming since second grade in high school.</p>
-            <p>Graduated from STMIK Balikpapan in 2017.</p>
-            <p>I've worked with startups and some P2P project over the years.</p>
+          <div class="content">
+            <div class="wrapper">
+              <p>I'am [[age]] year old self taught Software Developer live in Balikpapan, Indonesia.</p>
+              <p>Learn programming since second grade in high school.</p>
+              <p>Graduated from STMIK Balikpapan in 2017.</p>
+              <p>I've worked with startups and some P2P project over the years.</p>
+            </div>
             <hr class="style-eight" />
-            <h5>Follow me on:</h5>
-            <div class="social-media-links">
+            <div class="wrapper">
+              <h5>Follow me on:</h5>
+              <div class="social-media-links">
 
-              <a target="_blank" href="//github.com/muhammadsayuti">
-                <i class="fa fa-github"></i>
-              </a>
-              <a target="_blank" href="//twitter.com/msayuti94">
-                <i class="fa fa-twitter"></i>
-              </a>
-              <a target="_blank" href="//www.linkedin.com/in/muhammad-sayuti-74365b10a/">
-                <i class="fa fa-linkedin"></i>
-              </a>
+                <a target="_blank" href="//github.com/muhammadsayuti">
+                  <i class="fa fa-github"></i>
+                </a>
+                <a target="_blank" href="//twitter.com/msayuti94">
+                  <i class="fa fa-twitter"></i>
+                </a>
+                <a target="_blank" href="//www.linkedin.com/in/muhammad-sayuti-74365b10a/">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -510,7 +566,7 @@
       </section>
       <section id="certifications">
 
-        <h4>Certifications</h4>
+        <h2 class="text-center">Certifications</h2>
 
         <ul class="grid">
           <li class="cert-item">
@@ -521,7 +577,7 @@
         </ul>
       </section>
       <section id="skills">
-        <h4>Skills</h4>
+        <h2 class="text-center">Skills</h2>
         <ul class="grid">
           <li class="skill-item">
             <paper-card image="/images/HTML5.png">
@@ -578,10 +634,25 @@
 
             </paper-card>
           </li>
+          <li class="skill-item">
+            <paper-card image="/images/polymer.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/react.png">
+
+            </paper-card>
+          </li>
+          <li class="skill-item">
+            <paper-card image="/images/vue.png">
+
+            </paper-card>
+          </li>
         </ul>
       </section>
       <section id="portofolio">
-        <h4 class="text-center">Portofolio</h4>
+        <h2 class="text-center">Portofolio</h2>
         <ul class="grid">
           <li class="portofolio-item">
             <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fusers%2Fportofolio2.jpg?alt=media&token=5cb3c6f3-cbd4-4668-bb72-d21e9709487a">
@@ -712,7 +783,7 @@
         </div>
       </div>
       <div class="bottom">
-        <span>© 2017. All Rights Reserved.</span>
+        <span>© {{year}}. All Rights Reserved.</span>
         <span>Designed by Muhammad Sayuti.</span>
       </div>
     </div>
@@ -725,7 +796,14 @@
         age: {
           type: Number,
           computed: 'computeAge(route)'
+        },
+        year: {
+          type: Number,
+          computed: 'computeYear(route)'
         }
+      },
+      computeYear: function () {
+        return new Date().getFullYear();
       },
       computeAge: function (route) {
         var now = new Date();
@@ -767,32 +845,9 @@
         this.scrollTo(selected);
       },
       scrollTo: function (id) {
-        const MIN_PIXELS_PER_STEP = 16;
-        const MAX_SCROLL_STEPS = 30;
-
-        const scroller = document.body;
         const target = this.querySelector(id);
         const targetY = target.offsetTop;
-
-        const pixelsPerStep = Math.max(MIN_PIXELS_PER_STEP,
-          Math.abs((targetY - scroller.scrollTop) / MAX_SCROLL_STEPS));
-
-        const stepFunc = function () {
-          const current = scroller.scrollTop;
-
-          if (current < targetY) {
-            scroller.scrollTop =
-              Math.min(targetY, pixelsPerStep + scroller.scrollTop);
-          } else {
-            scroller.scrollTop = Math.max(targetY, scroller.scrollTop - pixelsPerStep);
-          }
-          if ((current < targetY && scroller.scrollTop >= targetY) || (current > targetY && scroller.scrollTop === targetY)) {
-            return;
-          }
-          window.requestAnimationFrame(stepFunc);
-        };
-        window.scrollTo(0, targetY)
-        // window.requestAnimationFrame(stepFunc);
+        animateScrollTo(targetY);
       },
       displayMap: function () {
         var point = new google.maps.LatLng(-1.2284667, 116.8186361);
