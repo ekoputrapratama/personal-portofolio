@@ -1,0 +1,14 @@
+{
+  "name": "animated-scroll-to",
+  "homepage": "https://github.com/Stanko/animated-scroll-to",
+  "_release": "a163140fc0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a163140fc0496e08e882ca25335d4223407ea5f6"
+  },
+  "_source": "https://github.com/Stanko/animated-scroll-to.git",
+  "_target": "*",
+  "_originalSource": "Stanko/animated-scroll-to",
+  "_direct": true
+}
