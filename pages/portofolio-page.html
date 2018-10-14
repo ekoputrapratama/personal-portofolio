@@ -145,15 +145,26 @@
       }
 
       section#certifications>.grid {
-        grid-template-columns: 500px;
+        display: grid;
+        grid-template-columns: 480px;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 10px 10px;
       }
 
-      section#certifications>ul>li>paper-card {
+      section#certifications>ul>li.cert-item {
+        width: 100%;
+      }
+
+      section#certifications>ul>li.cert-item>paper-card {
         --paper-card-header-image-text: {
           background-color: rgba(0, 0, 0, 0.5);
           color: #fff;
           width: 100%;
         }
+
+        ;
+
+        --paper-card-header: {}
       }
 
       section#about {
@@ -458,6 +469,7 @@
 
         section#certifications>.grid {
           grid-template-columns: 360px 360px;
+          grid-template-rows: 1fr 1fr;
         }
 
         section#portofolio>.grid {
@@ -475,8 +487,10 @@
         }
 
         section#certifications>.grid {
-          grid-template-columns: 490px 490px;
+          grid-template-columns: 480px 480px;
+          grid-template-rows: 1fr 1fr;
           width: auto;
+          grid-gap: 10px 10px;
         }
 
         section#portofolio>.grid {
@@ -570,16 +584,20 @@
 
         <ul class="grid">
           <li class="cert-item">
-            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2FFront-end-certification.jpg?alt=media&token=54cd429b-28bb-48b2-88a5-92c38e3911e6"
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fcertifications%2Flegacy-front-end(800).png?alt=media&token=33cdd17d-e12b-4a68-a670-a872c7c46457"
               heading="Freecodecamp: Front End Certificate">
             </paper-card>
-          <li>
+          </li>
           <li class="cert-item">
-            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fcertifications%2Fapis-and-microservices.png?alt=media&token=aadadf55-939b-44de-ae5a-3746a9383158"
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fcertifications%2Fapis-and-microservices(800).png?alt=media&token=0ee477d5-6381-48fb-bfc8-59a82326cea4"
               heading="Freecodecamp: Api And Microservice">
             </paper-card>
-          <li>
-
+          </li>
+          <li class="cert-item">
+            <paper-card image="https://firebasestorage.googleapis.com/v0/b/nerdiex-99466.appspot.com/o/images%2Fcertifications%2Fjavascript-algorithms-and-data-structures(800).png?alt=media&token=7c450f36-b93d-4a7a-8956-3fb99b1c72f8"
+              heading="Freecodecamp: JavaScript Algorithms and Data Structures">
+            </paper-card>
+          </li>
         </ul>
       </section>
       <section id="skills">
