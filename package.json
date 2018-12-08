@@ -1,0 +1,34 @@
+{
+  "name": "personal-landing-page",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  },
+  "devDependencies": {
+    "fuse-box-react-scripts": "3.0.80",
+    "babel-core": "7.0.0-bridge.0",
+    "fuse-box-react-scripts-babel": "^3.0.80"
+  },
+  "scripts": {
+    "start": "fuse-box-react-scripts start",
+    "build": "fuse-box-react-scripts build",
+    "test": "fuse-box-react-scripts test --env=jsdom",
+    "eject": "fuse-box-react-scripts eject",
+    "ejectconfig": "fuse-box-react-scripts ejectconfig"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  }
+}
