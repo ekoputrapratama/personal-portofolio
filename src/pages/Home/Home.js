@@ -3,6 +3,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
+const headerBg =
+  process.env.NODE_ENV === 'development'
+    ? '/assets/images/personal-bg.png'
+    : '/dist/assets/images/personal-bg.png';
+
+const pic =
+  process.env.NODE_ENV === 'development'
+    ? '/assets/images/Foto-rect.png'
+    : '/dist/assets/images/Foto-rect.png';
+
 export default class Home extends Component {
   static propTypes = {};
   constructor(props) {
@@ -60,8 +70,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
-        <section className="head">
-          {/* <img className="image" src="/assets/images/personal-bg.png" /> */}
+        <section className="head" style={{ backgroundImage: headerBg }}>
           <div className="overlay" />
           <div className="content">
             <span>HI, I'AM</span>
@@ -95,7 +104,7 @@ export default class Home extends Component {
           <div className="container">
             <div className="left">
               <div className="image">
-                <img src="/assets/images/Foto-rect.png" />
+                <img src={pic} />
               </div>
             </div>
             <div className="right">

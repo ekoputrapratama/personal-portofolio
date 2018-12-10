@@ -103,7 +103,8 @@ Sparky.task(
           FIREBASE_PROJECT_ID: env.projectId,
           FIREBASE_DATABASE_URL: env.databaseURL,
           FIREBASE_AUTH_DOMAIN: env.authDomain,
-          FIREBASE_STORAGE_BUCKET: env.storageBucket
+          FIREBASE_STORAGE_BUCKET: env.storageBucket,
+          PUBLIC_PATH: ''
         }),
         // BabelPlugin({
         //   config: {
@@ -163,7 +164,12 @@ Sparky.task(
           CSSPlugin({
             group: 'style.css',
             outFile: 'dist/style.css',
-            inject: true
+            inject: file => {
+              if (isProduction) {
+                return `/dist/${file}`;
+              }
+              return file;
+            }
           })
         )
         .plugin(
@@ -174,7 +180,8 @@ Sparky.task(
             'process.env.FIREBASE_PROJECT_ID': `"${env.projectId}"`,
             'process.env.FIREBASE_STORAGE_BUCKET': `"${env.storageBucket}"`,
             'process.env.GMAIL_USER': `"${env.gmailUser}"`,
-            'process.env.GMAIL_PASSWORD': `"${env.gmailPassword}"`
+            'process.env.GMAIL_PASSWORD': `"${env.gmailPassword}"`,
+            'process.env.PUBLIC_PATH': '/dist'
           })
         )
         .instructions('> [src/index.js] +fuse-box-css');
