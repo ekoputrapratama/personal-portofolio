@@ -1,0 +1,78 @@
+.front {
+  .appBar {
+    // background: #4282f5;
+    .toolbar {
+      display: flex;
+      flex-flow: column;
+      padding: 0;
+      font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      .toolbarWrapper {
+        padding-left: 32px;
+        padding-right: 32px;
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+      }
+      .expander {
+        flex-grow: 1;
+      }
+      .topBar {
+        width: 100%;
+        display: block;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-color: rgba(0, 0, 0, 0.2);
+        font-size: 0.875rem;
+        transition: all 200ms linear;
+        height: 33px;
+        box-sizing: border-box;
+        &.collapsed {
+          height: 0px;
+          padding: 0;
+          overflow: hidden;
+        }
+        .navItem {
+          margin-right: 2rem;
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .bottomBar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-grow: 1;
+        .toolbarWrapper {
+          width: 100%;
+          justify-content: center;
+          & > :nth-child(1) {
+            // flex-grow: 1;
+          }
+        }
+        .bottomNavigation {
+          min-height: 56px;
+          display: flex;
+          flex-flow: row;
+          align-items: center;
+          font-size: 1rem;
+          height: 100%;
+          .navItem {
+            margin-right: 2rem;
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .main {
+    transition: all 200ms linear;
+  }
+}

@@ -1,15 +1,21 @@
 {
-    "compilerOptions": {
-    "module": "commonjs",
+  "compilerOptions": {
+    "allowJs": false,
     "target": "es5",
-    "emitDecoratorMetadata": false,
-    "experimentalDecorators": true,
-    "importHelpers": false,
-    "noEmitHelpers": true,
-    "strict": false,
+    "outDir": "public",
+    "jsx": "react",
+    "declaration": true,
+    "alwaysStrict": false,
+    "sourceMap": true,
+    "strictNullChecks": false,
     "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "lib": ["dom", "es6", "es7", "es2015", "es2016"]
+  },
+  "include": ["typings/*.d.ts"]
 }
