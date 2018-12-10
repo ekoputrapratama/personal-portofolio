@@ -70,7 +70,9 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home">
-        <section className="head" style={{ backgroundImage: headerBg }}>
+        <section
+          className="head"
+          style={{ backgroundImage: `url(${headerBg})` }}>
           <div className="overlay" />
           <div className="content">
             <span>HI, I'AM</span>
