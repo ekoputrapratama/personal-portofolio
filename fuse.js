@@ -164,12 +164,7 @@ Sparky.task(
           CSSPlugin({
             group: 'style.css',
             outFile: 'dist/style.css',
-            inject: file => {
-              if (isProduction) {
-                return `/dist/${file}`;
-              }
-              return file;
-            }
+            inject: true
           })
         )
         .plugin(
