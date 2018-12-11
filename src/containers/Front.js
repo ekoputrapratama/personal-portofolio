@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
 import { Switch, Redirect } from 'react-router';
 import { Route, Link } from 'react-router-dom';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,12 +8,16 @@ import AppBar from '@material-ui/core/AppBar';
 import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import * as scrollActions from '../actions/scroll';
 import Home from '../pages/Home';
 import Typography from '@material-ui/core/Typography';
 import Footer from '../components/Footer/Footer';
+import { connect } from 'react-redux';
 
-export default class Front extends Component {
-  static propTypes = {};
+class Front extends Component {
+  static propTypes = {
+    scrollTo: PropTypes.func
+  };
   state = {
     contentMargin: '89px',
     topBarClass: 'topBar'
@@ -33,6 +38,7 @@ export default class Front extends Component {
     };
   }
   render() {
+    const { scrollTo } = this.props;
     return (
       <div className="front">
         <AppBar className="appBar" position="fixed">
@@ -51,16 +57,49 @@ export default class Front extends Component {
               <div className="toolbarWrapper">
                 {/* <div className="expander" /> */}
                 <nav className="bottomNavigation">
-                  <Link className="navItem" to="/home">
+                  <Link
+                    className="navItem"
+                    to="/home"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollTo('home');
+                    }}>
                     Home
                   </Link>
-                  <Link className="navItem" to="/home">
+                  <Link
+                    className="navItem"
+                    to="/home"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollTo('about');
+                    }}>
                     About
                   </Link>
-                  <Link className="navItem" to="/home">
-                    Skills
+                  <Link
+                    className="navItem"
+                    to="#education"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollTo('education');
+                    }}>
+                    Education
                   </Link>
-                  <Link className="navItem" to="/home">
+                  <Link
+                    className="navItem"
+                    to="#experience"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollTo('experience');
+                    }}>
+                    Experience
+                  </Link>
+                  <Link
+                    className="navItem"
+                    to="#portofolio"
+                    onClick={e => {
+                      e.preventDefault();
+                      scrollTo('portofolio');
+                    }}>
                     Portofolio
                   </Link>
                 </nav>
@@ -79,3 +118,12 @@ export default class Front extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(scrollActions, dispatch);
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Front);

@@ -1,7 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import scrollTo from 'animated-scroll-to';
 import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 const headerBg =
   process.env.NODE_ENV === 'development'
@@ -13,8 +15,10 @@ const pic =
     ? '/assets/images/Foto-rect.png'
     : '/dist/assets/images/Foto-rect.png';
 
-export default class Home extends Component {
-  static propTypes = {};
+class Home extends Component {
+  static propTypes = {
+    section: PropTypes.string
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -67,11 +71,37 @@ export default class Home extends Component {
     return age;
   }
   sendMail = () => {};
+  componentWillUpdate(nextProps) {
+    if (nextProps && this.props.section !== nextProps.section) {
+      switch (nextProps.section) {
+        case 'home':
+          scrollTo(this.home.offsetTop - 64);
+          break;
+        case 'education':
+          scrollTo(this.education.offsetTop - 64);
+          break;
+        case 'experience':
+          scrollTo(this.experience.offsetTop - 64);
+          break;
+        case 'portofolio':
+          scrollTo(this.portofolio.offsetTop - 64);
+          break;
+        case 'contact':
+          scrollTo(this.contact.offsetTop - 64);
+          break;
+        case 'about':
+          scrollTo(this.about.offsetTop - 64);
+          break;
+        default:
+      }
+    }
+  }
   render() {
     return (
       <div className="home">
         <section
           className="head"
+          ref={el => (this.home = el)}
           style={{ backgroundImage: `url(${headerBg})` }}>
           <div className="overlay" />
           <div className="content">
@@ -101,7 +131,7 @@ export default class Home extends Component {
             <Button className="contactBtn">Contact Me</Button>
           </div>
         </section>
-        <section className="profile">
+        <section className="profile" ref={el => (this.about = el)}>
           <h2>About Me</h2>
           <div className="container">
             <div className="left">
@@ -129,7 +159,7 @@ export default class Home extends Component {
             </div>
           </div>
         </section>
-        <section className="education">
+        <section className="education" ref={el => (this.education = el)}>
           <h2>Education & Achievment</h2>
           <div className="container">
             <div className="formal">
@@ -217,7 +247,7 @@ export default class Home extends Component {
             </div>
           </div>
         </section>
-        <section className="experience">
+        <section className="experience" ref={el => (this.experience = el)}>
           <h2>Experience</h2>
           <div className="container">
             <div className="item">
@@ -242,7 +272,7 @@ export default class Home extends Component {
             </div>
           </div>
         </section>
-        <section className="portofolio">
+        <section className="portofolio" ref={el => (this.portofolio = el)}>
           <h2>Portofolio</h2>
           <div className="container">
             <div className="item">
@@ -423,7 +453,7 @@ export default class Home extends Component {
             </div> */}
           </div>
         </section>
-        <section className="contact">
+        <section className="contact" ref={el => (this.contact = el)}>
           <h2>Contact</h2>
           <div className="container">
             <div className="form-group">
@@ -469,3 +499,11 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    section: state.scroll.section
+  };
+}
+
+export default connect(mapStateToProps)(Home);

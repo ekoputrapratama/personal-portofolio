@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-// import theme from './theme'
+import scrollTo from './scroll';
 
 const rootReducer = combineReducers({
   // theme,
+  scroll: scrollTo,
   routing: routerReducer
 });
 
