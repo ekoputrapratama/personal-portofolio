@@ -75,22 +75,22 @@ class Home extends Component {
     if (nextProps && this.props.section !== nextProps.section) {
       switch (nextProps.section) {
         case 'home':
-          scrollTo(this.home.offsetTop - 64);
+          scrollTo(this.home.offsetTop - 89);
           break;
         case 'education':
-          scrollTo(this.education.offsetTop - 64);
+          scrollTo(this.education.offsetTop - 89);
           break;
         case 'experience':
-          scrollTo(this.experience.offsetTop - 64);
+          scrollTo(this.experience.offsetTop - 89);
           break;
         case 'portofolio':
-          scrollTo(this.portofolio.offsetTop - 64);
+          scrollTo(this.portofolio.offsetTop - 89);
           break;
         case 'contact':
-          scrollTo(this.contact.offsetTop - 64);
+          scrollTo(this.contact.offsetTop - 89);
           break;
         case 'about':
-          scrollTo(this.about.offsetTop - 64);
+          scrollTo(this.about.offsetTop - 89);
           break;
         default:
       }
@@ -128,7 +128,11 @@ class Home extends Component {
                 <i className="fa fa-linkedin" />
               </a>
             </div>
-            <Button className="contactBtn">Contact Me</Button>
+            <Button
+              className="contactBtn"
+              onClick={ref => scrollTo(this.contact.offsetTop - 89)}>
+              Contact Me
+            </Button>
           </div>
         </section>
         <section className="profile" ref={el => (this.about = el)}>
